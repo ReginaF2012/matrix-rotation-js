@@ -1,23 +1,23 @@
-function rotateNinetyDeg(matrix) {
-    let left = 0, right = matrix.length - 1;
+function rotateNinetyDeg(squareMatrix) {
+    let left = 0, right = squareMatrix.length - 1;
     while (left < right) {
-        for (let i = left; i < right; i++) {
+        for (let i = 0; i < right - left; i++) {
             let top = left, bottom = right;
 
             // save top left
-            let topLeft = matrix[top][left + i];
+            let topLeft = squareMatrix[top][left + i];
             
             // swap top left and bottom left
-            matrix[top][left + i] = matrix[bottom - i][left];
+            squareMatrix[top][left + i] = squareMatrix[bottom - i][left];
 
             // swap bottom left and bottom right
-            matrix[bottom - i][left] = matrix[bottom][right - i];
+            squareMatrix[bottom - i][left] = squareMatrix[bottom][right - i];
             
             // swap bottom right and top right
-            matrix[bottom][right - i] = matrix[top + i][right];
+            squareMatrix[bottom][right - i] = squareMatrix[top + i][right];
 
             // swap top right and top left
-            matrix[top + i][right] = topLeft;
+            squareMatrix[top + i][right] = topLeft;
 
         }
         left++;
@@ -26,7 +26,7 @@ function rotateNinetyDeg(matrix) {
 }
 
 
-let matrix = [
+let squareMatrix = [
     ['A', 'B', 'C', 'D'],
     ['E', 'F', 'G', 'H'],
     ['I', 'J', 'K', 'L'],
@@ -34,7 +34,7 @@ let matrix = [
             ]
 
 console.log('before');
-console.log(matrix);
-rotateNinetyDeg(matrix);
+console.log(squareMatrix);
+rotateNinetyDeg(squareMatrix);
 console.log('after');
-console.log(matrix);
+console.log(squareMatrix);
